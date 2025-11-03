@@ -1,0 +1,12 @@
+node_modules/
+.next/
+# Variáveis de ambiente
+.env
+.env.local
+.env.*.local
+# Ignorar vídeos grandes
+/public/*.mp4
+/public/*_files/
+/public/videos/
+/public/*.mov
+/public/*.avi

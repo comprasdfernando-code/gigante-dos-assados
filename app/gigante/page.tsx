@@ -269,7 +269,8 @@ export default function GigantePage() {
   }}
 >
   <video
-    src="/video1.mp4"
+    src="https://xyzcompany.supabase.co/storage/v1/object/public/gigante/video1.mp4"
+
     controls
     autoPlay
     muted

@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import RootClientLayout from "./root-client-layout"; // ✅ usa o wrapper
 
 export const metadata: Metadata = {
-  title: "IA Drogarias",
-  description: "Saúde com Inteligência 💊",
+  title: "Gigante Dos Assados",
+  description: "Gigante no Sabor",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

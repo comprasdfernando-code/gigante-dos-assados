@@ -269,7 +269,7 @@ export default function GigantePage() {
   }}
 >
   <video
-    src="https://xyzcompany.supabase.co/storage/v1/object/public/gigante/video1.mp4"
+    src="https://skzcvpkmcktjryvstcti.supabase.co/storage/v1/object/public/gigante/WhatsApp%20Video%202025-11-02%20at%2023.44.50.mp4"
 
     controls
     autoPlay

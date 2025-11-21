@@ -1,386 +1,71 @@
 "use client";
 
-import { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
-import Link from "next/link";
+import Image from "next/image";
+import NavButton from "../../components/gigante/NavButton";
 
-export default function GigantePage() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
+export default function GiganteHome() {
   return (
-    <main
-      style={{
-        textAlign: "center",
-        paddingTop: "100px",
-        backgroundColor: "#fff",
-        minHeight: "100vh",
-      }}
-    >
-      {/* 🔴 TOPO FIXO RESPONSIVO */}
-      <header
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "80px",
-          backgroundColor: "#b91c1c",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "0 20px",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
-          zIndex: 1000,
-        }}
-      >
-        {/* 🏷️ LOGO À ESQUERDA */}
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <img
-            src="/gigante-logo.png"
-            alt="Gigante dos Assados"
-            style={{ height: 45 }}
-          />
-          <h2 style={{ color: "#fff", fontWeight: "bold", fontSize: "1.2rem" }}>
-            Gigante dos Assados
-          </h2>
+    <main className="min-h-screen bg-[#fafafa]">
+
+      {/* TOPO */}
+      <header className="w-full bg-[#b91c1c] text-white shadow-md">
+        <div className="max-w-5xl mx-auto flex items-center justify-between py-4 px-4">
+          <div className="flex items-center gap-3">
+            <Image
+              src="/frango-icon.png"
+              width={50}
+              height={50}
+              alt="Frango"
+              className="rounded-lg"
+            />
+            <h1 className="text-xl md:text-2xl font-bold">
+              Gigante dos Assados
+            </h1>
+          </div>
+
+          <nav className="hidden md:flex gap-3">
+            <NavButton href="/gigante/pdv">PDV</NavButton>
+            <NavButton href="/gigante/produtos">Produtos</NavButton>
+            <NavButton href="/gigante/financeiro">Financeiro</NavButton>
+          </nav>
         </div>
-
-        {/* 🍗 BOTÕES À DIREITA (desktop) */}
-        <nav
-          className="menu-desktop"
-          style={{
-            display: "flex",
-            gap: "15px",
-          }}
-        >
-          <Link href="/gigante/pdv">
-            <button
-              style={{
-                backgroundColor: "#fff",
-                color: "#b91c1c",
-                border: "none",
-                padding: "10px 18px",
-                borderRadius: 6,
-                cursor: "pointer",
-                fontWeight: "bold",
-                fontSize: 14,
-                boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
-              }}
-            >
-              PDV
-            </button>
-          </Link>
-
-          <Link href="/gigante/produtos">
-            <button
-              style={{
-                backgroundColor: "#fff",
-                color: "#b91c1c",
-                border: "none",
-                padding: "10px 18px",
-                borderRadius: 6,
-                cursor: "pointer",
-                fontWeight: "bold",
-                fontSize: 14,
-                boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
-              }}
-            >
-              Produtos
-            </button>
-          </Link>
-
-          <Link href="/gigante/caixa">
-            <button
-              style={{
-                backgroundColor: "#fff",
-                color: "#b91c1c",
-                border: "none",
-                padding: "10px 18px",
-                borderRadius: 6,
-                cursor: "pointer",
-                fontWeight: "bold",
-                fontSize: 14,
-                boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
-              }}
-            >
-              Caixa
-            </button>
-          </Link>
-        </nav>
-
-        {/* 🍔 BOTÃO MOBILE */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="menu-mobile-btn"
-          style={{
-            background: "none",
-            border: "none",
-            color: "white",
-            fontSize: "26px",
-            display: "none",
-          }}
-        >
-          ☰
-        </button>
       </header>
 
-      {/* MENU MOBILE (aparece quando abre) */}
-      {menuOpen && (
-        <div
-          style={{
-            position: "fixed",
-            top: "80px",
-            right: 0,
-            width: "100%",
-            backgroundColor: "#b91c1c",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            padding: "10px 0",
-            zIndex: 999,
-            gap: "10px",
-          }}
-        >
-          <Link href="/gigante/pdv">
-            <button
-              onClick={() => setMenuOpen(false)}
-              style={{
-                backgroundColor: "#fff",
-                color: "#b91c1c",
-                border: "none",
-                padding: "10px 60px",
-                borderRadius: 6,
-                fontWeight: "bold",
-              }}
-            >
-              PDV
-            </button>
-          </Link>
+      {/* CONTEÚDO */}
+      <section className="max-w-5xl mx-auto px-4 py-10">
+        <h2 className="text-center text-3xl font-bold text-[#b91c1c]">
+          Gigante dos Assados
+        </h2>
+        <p className="text-center text-gray-600">
+          Grande no sabor 🔥
+        </p>
 
-          <Link href="/gigante/produtos">
-            <button
-              onClick={() => setMenuOpen(false)}
-              style={{
-                backgroundColor: "#fff",
-                color: "#b91c1c",
-                border: "none",
-                padding: "10px 60px",
-                borderRadius: 6,
-                fontWeight: "bold",
-              }}
-            >
-              Produtos
-            </button>
-          </Link>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+          <div className="text-center">
+            <Image src="/frango1.jpg" width={350} height={300} alt="Frango Assado" className="rounded-lg shadow" />
+            <p className="mt-2 font-medium">Frango Assado — R$ 49,90</p>
+          </div>
 
-          <Link href="/gigante/caixa">
-            <button
-              onClick={() => setMenuOpen(false)}
-              style={{
-                backgroundColor: "#fff",
-                color: "#b91c1c",
-                border: "none",
-                padding: "10px 60px",
-                borderRadius: 6,
-                fontWeight: "bold",
-              }}
-            >
-              Caixa
-            </button>
-          </Link>
+          <div className="text-center">
+            <Image src="/combo.jpg" width={350} height={300} alt="Combo Família" className="rounded-lg shadow" />
+            <p className="mt-2 font-medium">Combo Família — R$ 79,90</p>
+          </div>
+
+          <div className="text-center">
+            <Image src="/costela.jpg" width={350} height={300} alt="Costela no Bafo" className="rounded-lg shadow" />
+            <p className="mt-2 font-medium">Costela no Bafo — R$ 49,90</p>
+          </div>
         </div>
-      )}
+      </section>
 
-      {/* LOGO E FRASE */}
-      <h1 style={{ color: "#b91c1c", marginBottom: 10, marginTop: 20 }}>
-        Gigante dos Assados
-      </h1>
-      <p style={{ color: "#444", marginBottom: 25 }}>Grande no sabor 🍗</p>
+      {/* BOTÃO FLUTUANTE DO WHATSAPP */}
+      <a
+        href="https://wa.me/5511948163211?text=Olá!%20Quero%20fazer%20um%20pedido%20🍗"
+        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 shadow-xl rounded-full p-4 text-white flex items-center justify-center"
+      >
+        <Image src="/frango-icon.png" width={38} height={38} alt="WhatsApp" />
+      </a>
 
-      {/* 🧩 CARROSSEL DE PROMOÇÕES */}
-      <div style={{ maxWidth: 800, margin: "0 auto 40px" }}>
-        <Swiper
-          modules={[Autoplay, Pagination]}
-          autoplay={{ delay: 3000 }}
-          pagination={{ clickable: true }}
-          spaceBetween={20}
-          slidesPerView={1}
-          breakpoints={{
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-        >
-          <SwiperSlide>
-            <img
-              src="/promo1.jpeg"
-              alt="Promoção 1"
-              style={{
-                width: "100%",
-                borderRadius: 10,
-                boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-              }}
-            />
-            <p style={{ marginTop: 10, fontWeight: "bold" }}>
-              Frango Assado R$ 49,90
-            </p>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <img
-              src="/promo2.jpeg"
-              alt="Promoção 2"
-              style={{
-                width: "100%",
-                borderRadius: 10,
-                boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-              }}
-            />
-            <p style={{ marginTop: 10, fontWeight: "bold" }}>
-              Combo Família R$ 79,90
-            </p>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <img
-              src="/promo4.jpeg"
-              alt="Promoção 4"
-              style={{
-                width: "100%",
-                borderRadius: 10,
-                boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-              }}
-            />
-            <p style={{ marginTop: 10, fontWeight: "bold" }}>
-              Frango Assado R$ 49,90
-            </p>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <img
-              src="/promo5.jpeg"
-              alt="Promoção 5"
-              style={{
-                width: "100%",
-                borderRadius: 10,
-                boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-              }}
-            />
-            <p style={{ marginTop: 10, fontWeight: "bold" }}>
-              Frango Assado R$ 49,90
-            </p>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <img
-              src="/promo6.jpeg"
-              alt="Promoção 6"
-              style={{
-                width: "100%",
-                borderRadius: 10,
-                boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-              }}
-            />
-            <p style={{ marginTop: 10, fontWeight: "bold" }}>
-              Frango Assado R$ 49,90
-            </p>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <img
-              src="/promo7.jpeg"
-              alt="Promoção 7"
-              style={{
-                width: "100%",
-                borderRadius: 10,
-                boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-              }}
-            />
-            <p style={{ marginTop: 10, fontWeight: "bold" }}>
-              Frango Assado R$ 49,90
-            </p>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <img
-              src="/promo8.jpeg"
-              alt="Promoção 8"
-              style={{
-                width: "100%",
-                borderRadius: 10,
-                boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-              }}
-            />
-            <p style={{ marginTop: 10, fontWeight: "bold" }}>
-              Frango Assado R$ 49,90
-            </p>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <img
-              src="/promo3.jpeg"
-              alt="Promoção 3"
-              style={{
-                width: "100%",
-                borderRadius: 10,
-                boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-              }}
-            />
-            <p style={{ marginTop: 10, fontWeight: "bold" }}>
-              Costela no Bafo R$ 49,90
-            </p>
-          </SwiperSlide>
-        </Swiper>
-      </div>
-
-      {/* 🎥 VÍDEO DE PROPAGANDA */}
-<div
-  style={{
-    maxWidth: "600px",        // 🔹 Largura máxima (ajusta aqui se quiser menor ou maior)
-    margin: "30px auto",      // 🔹 Centraliza horizontalmente
-    textAlign: "center",
-  }}
->
-  <video
-    src="https://skzcvpkmcktjryvstcti.supabase.co/storage/v1/object/public/gigante/WhatsApp%20Video%202025-11-02%20at%2023.44.50.mp4"
-
-    controls
-    autoPlay
-    muted
-    loop
-    style={{
-      width: "100%",
-      height: "auto",
-      borderRadius: "10px",
-      boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
-    }}
-  />
-
-  <p
-    style={{
-      marginTop: 10,
-      fontWeight: "bold",
-      color: "#b91c1c",
-      fontSize: "14px",
-    }}
-  >
-    🍗 Propaganda Oficial - Gigante dos Assados
-  </p>
-</div>
-
-      {/* CSS RESPONSIVO INLINE */}
-      <style>{`
-        @media (max-width: 768px) {
-          .menu-desktop {
-            display: none !important;
-          }
-          .menu-mobile-btn {
-            display: block !important;
-          }
-        }
-      `}</style>
     </main>
   );
 }

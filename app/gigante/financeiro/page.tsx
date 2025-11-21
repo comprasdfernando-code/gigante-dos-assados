@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import MenuButton from "@/components/gigante/MenuButton";
-import CardFinanceiro from "@/components/gigante/CardFinanceiro";
+import MenuButton from "../../../components/gigante/MenuButton";
+import CardFinanceiro from "../../../components/gigante/CardFinanceiro";
 
 import {
   Chart as ChartJS,
@@ -95,7 +95,7 @@ export default function FinanceiroGigante() {
 
           <CardFinanceiro
             label="Margem Bruta"
-            valor={${margemBruta}%}
+            valor={`${margemBruta}%`}
             color="#22C55E"
             detalhe="Acima da meta de 65%"
           />

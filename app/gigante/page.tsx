@@ -1,70 +1,56 @@
-"use client";
+import Link from "next/link";
 
-import Image from "next/image";
-import NavButton from "../../components/gigante/NavButton";
-
-export default function GiganteHome() {
+export default function Home() {
   return (
-    <main className="min-h-screen bg-[#fafafa]">
-
-      {/* TOPO */}
-      <header className="w-full bg-[#b91c1c] text-white shadow-md">
-        <div className="max-w-5xl mx-auto flex items-center justify-between py-4 px-4">
-          <div className="flex items-center gap-3">
-            <Image
-              src="/frango-icon.png"
-              width={50}
-              height={50}
-              alt="Frango"
-              className="rounded-lg"
-            />
-            <h1 className="text-xl md:text-2xl font-bold">
-              Gigante dos Assados
-            </h1>
-          </div>
-
-          <nav className="hidden md:flex gap-3">
-            <NavButton href="/gigante/pdv">PDV</NavButton>
-            <NavButton href="/gigante/produtos">Produtos</NavButton>
-            <NavButton href="/gigante/financeiro">Financeiro</NavButton>
-          </nav>
-        </div>
-      </header>
-
-      {/* CONTEÚDO */}
-      <section className="max-w-5xl mx-auto px-4 py-10">
-        <h2 className="text-center text-3xl font-bold text-[#b91c1c]">
-          Gigante dos Assados
-        </h2>
-        <p className="text-center text-gray-600">
-          Grande no sabor 🔥
+    <main className="min-h-screen bg-[#0f0f0f] text-white flex flex-col items-center py-10 px-6">
+      
+      {/* LOGO / BANNER */}
+      <div className="text-center mb-10">
+        <h1 className="text-4xl font-bold tracking-wide">
+          Gigante dos Assados 🍗🔥
+        </h1>
+        <p className="text-gray-300 mt-2 text-lg">
+          Grande no sabor, gigante na experiência.
         </p>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
-          <div className="text-center">
-            <Image src="/frango1.jpg" width={350} height={300} alt="Frango Assado" className="rounded-lg shadow" />
-            <p className="mt-2 font-medium">Frango Assado — R$ 49,90</p>
-          </div>
+      {/* IMAGEM PRINCIPAL */}
+      <img
+        src="/frango.png"
+        alt="Gigante"
+        className="w-64 h-auto rounded-lg shadow-lg border border-[#f97316]/40 mb-8"
+      />
 
-          <div className="text-center">
-            <Image src="/combo.jpg" width={350} height={300} alt="Combo Família" className="rounded-lg shadow" />
-            <p className="mt-2 font-medium">Combo Família — R$ 79,90</p>
-          </div>
+      {/* BOTÕES */}
+      <div className="w-full max-w-md flex flex-col gap-4">
 
-          <div className="text-center">
-            <Image src="/costela.jpg" width={350} height={300} alt="Costela no Bafo" className="rounded-lg shadow" />
-            <p className="mt-2 font-medium">Costela no Bafo — R$ 49,90</p>
-          </div>
-        </div>
-      </section>
+        <Link
+          href="/gigante"
+          className="bg-[#f97316] hover:bg-[#ea580c] transition text-white py-4 text-center rounded-xl text-xl font-semibold shadow-lg"
+        >
+          🍗 Fazer Pedido
+        </Link>
 
-      {/* BOTÃO FLUTUANTE DO WHATSAPP */}
-      <a
-        href="https://wa.me/5511948163211?text=Olá!%20Quero%20fazer%20um%20pedido%20🍗"
-        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 shadow-xl rounded-full p-4 text-white flex items-center justify-center"
-      >
-        <Image src="/frango-icon.png" width={38} height={38} alt="WhatsApp" />
-      </a>
+        <Link
+          href="/gigante/pdv"
+          className="bg-[#27272a] hover:bg-[#3f3f46] transition text-white py-4 text-center rounded-xl text-xl font-semibold shadow-lg border border-gray-600"
+        >
+          🧾 PDV (Caixa)
+        </Link>
+
+        <Link
+          href="/gigante/financeiro"
+          className="bg-[#1e40af] hover:bg-[#1d4ed8] transition text-white py-4 text-center rounded-xl text-xl font-semibold shadow-lg"
+        >
+          📊 Financeiro
+        </Link>
+
+      </div>
+
+      {/* FOOTER */}
+      <footer className="mt-12 text-gray-500 text-sm">
+        Sistema desenvolvido por Fernando Tech 💛
+      </footer>
 
     </main>
   );

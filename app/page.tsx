@@ -1,139 +1,109 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Home() {
-  const fotosCarrossel = [
-    "/gigante/torresmo-rolo-assador.webp",
-    "/gigante/torresmo-inteiro.webp",
-    "/gigante/torresmo-fatiado-1.webp",
-    "/gigante/torresmo-fatiado-2.webp",
-    "/gigante/coxa-frango.webp",
-    "/gigante/carne-fatiada.webp",
+  const [slide, setSlide] = useState(0);
+
+  const fotos = [
+    "/f1.jpg",
+    "/f2.jpg",
+    "/f3.jpg",
+    "/f4.jpg",
+    "/f5.jpg",
+    "/f6.jpg",
+    "/f7.jpg",
+    "/f8.jpg",
+    "/f9.jpg",
   ];
 
-  const [index, setIndex] = useState(0);
-
-  function next() {
-    setIndex((i) => (i + 1) % fotosCarrossel.length);
-  }
-  function prev() {
-    setIndex((i) => (i - 1 + fotosCarrossel.length) % fotosCarrossel.length);
-  }
+  const next = () => setSlide((slide + 1) % fotos.length);
+  const prev = () => setSlide((slide - 1 + fotos.length) % fotos.length);
 
   return (
-    <main className="bg-yellow-100 min-h-screen pb-20">
-      
-      {/* HERO */}
-      <section className="relative w-full h-[450px] bg-yellow-400 flex items-center justify-center text-center">
-        <Image
-          src="/gigante/logo.webp"
-          alt="Gigante dos Assados"
-          width={350}
-          height={350}
-          className="drop-shadow-xl"
-        />
+    <main className="bg-[#fff7e6] text-[#2a2a2a] min-h-screen">
 
-        <h1 className="absolute bottom-5 text-4xl font-extrabold text-red-700 drop-shadow-lg">
-          Grande no Sabor!
+      {/* HEADER */}
+      <header className="w-full bg-yellow-500 p-4 shadow-md flex justify-between items-center">
+        <h1 className="text-2xl font-bold flex items-center gap-2">
+          <span>🍗🔥</span> Gigante dos Assados
         </h1>
-      </section>
 
-      {/* CARROSSEL */}
-      <section className="mt-10 px-4">
-        <h2 className="text-3xl font-bold text-center mb-4 text-red-800">
-          Nossos Assados
-        </h2>
+        <nav className="hidden md:flex gap-6 font-semibold">
+          <a href="#sobre">Sobre</a>
+          <a href="#cardapio">Cardápio</a>
+          <a href="#contato">Contato</a>
+        </nav>
+      </header>
 
-        <div className="relative w-full max-w-3xl mx-auto">
-          <Image
-            src={fotosCarrossel[index]}
-            width={1200}
-            height={700}
-            alt="Carrossel"
-            className="rounded-xl shadow-xl"
-          />
-
-          {/* Botões */}
-          <button
-            onClick={prev}
-            className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 text-white p-3 rounded-full"
-          >
-            ◀
-          </button>
-
-          <button
-            onClick={next}
-            className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 text-white p-3 rounded-full"
-          >
-            ▶
-          </button>
-        </div>
-      </section>
-
-      {/* SEÇÕES DE DESTAQUE */}
-      <section className="mt-14 px-5 grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <div className="p-6 bg-white rounded-xl shadow-xl border-2 border-yellow-400">
-          <h3 className="text-2xl font-bold text-red-700 mb-3 flex items-center gap-2">
-            🔥 Sobre Nós
-          </h3>
-          <p className="text-lg">
-            Casa de carnes e frango assado com os melhores cortes, torresmo de rolo crocante e aquele sabor de domingo!
-          </p>
-        </div>
-
-        <div className="p-6 bg-white rounded-xl shadow-xl border-2 border-yellow-400">
-          <h3 className="text-2xl font-bold text-red-700 mb-3 flex items-center gap-2">
-            🕒 Horário de Funcionamento
-          </h3>
-          <p className="text-lg">
-            Sábados, domingos e feriados <br />
-            Das <b>10h às 15h</b>
-          </p>
-        </div>
-
-        <div className="p-6 bg-white rounded-xl shadow-xl border-2 border-yellow-400">
-          <h3 className="text-2xl font-bold text-red-700 mb-3 flex items-center gap-2">
-            📍 Endereço
-          </h3>
-          <p className="text-lg">
-            Avenida Sapopemba 16015 — São Paulo, SP
-          </p>
-          <a
-            href="https://maps.app.goo.gl/xxxx"
-            className="mt-3 inline-block bg-red-600 text-white px-4 py-2 rounded-lg shadow-md"
-          >
-            Abrir no Google Maps
-          </a>
-        </div>
-
-        <div className="p-6 bg-white rounded-xl shadow-xl border-2 border-yellow-400">
-          <h3 className="text-2xl font-bold text-red-700 mb-3 flex items-center gap-2">
-            📞 Contato
-          </h3>
-          <p className="text-lg">+55 11 94816-3211</p>
-
-          <a
-            href="https://wa.me/5511948163211"
-            className="mt-3 inline-block bg-green-600 text-white px-4 py-2 rounded-lg shadow-md"
-          >
-            Pedir pelo WhatsApp
-          </a>
-        </div>
-      </section>
-
-      {/* BANNER CARDÁPIO */}
-      <section className="mt-16 px-4">
+      {/* HERO */}
+      <section className="relative w-full h-[380px] overflow-hidden">
         <Image
-          src="/gigante/banner-cardapio.webp"
-          width={1200}
-          height={1200}
-          alt="Cardápio"
-          className="rounded-xl shadow-xl mx-auto"
+          src={fotos[slide]}
+          fill
+          alt="Carrossel"
+          className="object-cover transition-all duration-700"
         />
+
+        {/* Botões */}
+        <button onClick={prev} className="absolute left-2 top-1/2 text-3xl bg-black/40 text-white px-3 py-1 rounded-full">‹</button>
+        <button onClick={next} className="absolute right-2 top-1/2 text-3xl bg-black/40 text-white px-3 py-1 rounded-full">›</button>
       </section>
-    </main>
-  );
+
+      {/* SOBRE */}
+      <section id="sobre" className="p-6 text-center">
+        <h2 className="text-3xl font-bold mb-3">🔥 Sobre Nós</h2>
+        <p className="text-lg">
+          A casa de carnes e frangos assados mais tradicional da região.
+          Torresmo de rolo crocante, frango assado no ponto e cortes especiais!
+        </p>
+      </section>
+
+      {/* GALERIA DE FOTOS */}
+      <section className="p-6" id="cardapio">
+        <h2 className="text-3xl font-bold mb-4 text-center">🍗 Nossos Assados</h2>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {fotos.map((img, i) => (
+            <div key={i} className="rounded-lg overflow-hidden shadow">
+              <Image src={img} alt="Foto" width={500} height={400} className="object-cover" />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CONTATO */}
+      <section id="contato" className="p-6 text-center bg-white shadow-inner">
+        <h2 className="text-2xl font-bold mb-2">📞 Contato</h2>
+
+        <p className="text-lg">
+          WhatsApp: <a href="https://wa.me/5511948163211" className="text-green-600 font-bold">11 94816-3211</a>
+        </p>
+
+        <p className="mt-3">📍 Av. Sapopemba, 16015 — São Paulo, SP</p>
+              <a
+        href="https://maps.app.goo.gl/L6T84Y9qR8eXA8"
+        className="text-blue-600 underline"
+      >
+        ➜ Abrir no Google Maps
+      </a>
+    </section>
+
+    {/* RODAPÉ */}
+    <footer className="bg-yellow-500 text-center py-4 mt-10 shadow-inner">
+      <p className="font-semibold text-[#2a2a2a]">
+        © 2025 Gigante dos Assados — Todos os direitos reservados.
+      </p>
+
+      <a
+        href="https://wa.me/5511948163211"
+        className="fixed bottom-6 right-6 bg-green-600 text-white font-bold px-6 py-3 rounded-full shadow-lg neon"
+      >
+        FAÇA SEU PEDIDO
+      </a>
+    </footer>
+  </main>
+);
 }
